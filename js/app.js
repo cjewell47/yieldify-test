@@ -1,7 +1,6 @@
 
 $(document).ready(function() {
 
-  //Canvas info
   const canvas  = document.getElementById('myCanvas');
   const ctx     = canvas.getContext('2d');
   let width     = $(window).width();
@@ -11,7 +10,6 @@ $(document).ready(function() {
   const radius  = 10;
   let count     = 360;
 
-  //Ball info
   let coordinates    = [0,0];
   let velocity       = [0,0];
   let acceleration   = [0,0];
@@ -22,7 +20,6 @@ $(document).ready(function() {
   const bounceFactor = 0.7;
   const color        = '#000';
 
-  //Timing info
   const refreshRate = 0.01;
   let start         = 0;
   let timer         = null;
@@ -51,7 +48,6 @@ $(document).ready(function() {
     var vectorX = ((Math.random() * 1000) + 1) * randomX;
     var vectorY = ((Math.random() * 1000) + 1) * randomY;
     forces.push([vectorX, vectorY, 0.05]);
-    // thrust applied for .05s
   }
 
   function draw() {
@@ -73,11 +69,9 @@ $(document).ready(function() {
       if(f[2] !== false) {
         f[2] -= rate;
       }
-      // Thrust forces applying
       if(f[2] < 0) {
         continue;
       }
-      // Gravity applying
       newLocation[0] += f[0];
       newLocation[1] += f[1];
       newForces.push(f);
@@ -123,7 +117,6 @@ $(document).ready(function() {
     }
   }
 
-  //Movement
   function move() {
     var newStart = new Date().getTime();
     var rate = (newStart-start)/1000;
